@@ -2,30 +2,16 @@ const dataPath = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
-  showHome();
 });
 
 function initNav() {
   document.getElementById('homeLink').addEventListener('click', (e) => {
     e.preventDefault();
-    showHome();
   });
   document.getElementById('catalogLink').addEventListener('click', (e) => {
     e.preventDefault();
     loadCategories();
   });
-}
-
-function showHome() {
-  const main = document.getElementById('mainArea');
-  main.innerHTML = `
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">Вітання</h2>
-        <p class="card-text">Натисніть <strong>Каталог</strong> для завантаження списку категорій з JSON (через Ajax). Також доступна категорія <strong>Specials</strong>, яка показує випадкову категорію.</p>
-      </div>
-    </div>
-  `;
 }
 
 async function loadCategories() {
@@ -129,3 +115,4 @@ function escapeHtml(str) {
 function escapeAttr(str) {
   return escapeHtml(str).replace(/"/g, '&quot;');
 }
+
