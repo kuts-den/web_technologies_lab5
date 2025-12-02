@@ -1,4 +1,4 @@
-const dataPath = 'data/'; 
+const dataPath = ''; 
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
@@ -132,3 +132,4 @@ function escapeHtml(str) {
 function escapeAttr(str) {
   return escapeHtml(str).replace(/"/g, '&quot;');
 }
+
