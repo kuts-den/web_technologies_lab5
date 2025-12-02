@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNav() {
   document.getElementById('homeLink').addEventListener('click', (e) => {
     e.preventDefault();
-    showHome();
   });
   document.getElementById('catalogLink').addEventListener('click', (e) => {
     e.preventDefault();
@@ -45,7 +44,6 @@ function renderCategories(categories) {
 
   main.innerHTML = html;
 
-  // Повісити обробники
   document.querySelectorAll('.category-link').forEach(el => {
     el.addEventListener('click', (e) => {
       const file = e.currentTarget.getAttribute('data-file');
@@ -119,5 +117,6 @@ function escapeHtml(str) {
 function escapeAttr(str) {
   return escapeHtml(str).replace(/"/g, '&quot;');
 }
+
 
 
