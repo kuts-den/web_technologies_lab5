@@ -1,119 +1,131 @@
-const DATA = '';
+const dataPath = '';
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+  initNav();
+  showHome();
+});
 
-function init() {
-  byId('homeLink').onclick = e => e.preventDefault();
-  byId('catalogLink').onclick = e => {
+function initNav() {
+  document.getElementById('homeLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    showHome();
+  });
+  document.getElementById('catalogLink').addEventListener('click', (e) => {
     e.preventDefault();
     loadCategories();
-  };
+  });
 }
 
-async function fetchJSON(path) {
-  const res = await fetch(DATA + path);
-  if (!res.ok) throw new Error(`Не вдалося завантажити ${path}`);
-  return res.json();
-}
-
-function byId(id) {
-  return document.getElementById(id);
-}
-
-async function loadCategories() {
-  const main = byId('mainArea');
-  main.innerHTML = `<p>Завантаження...</p>`;
-
-  try {
-    const categories = await fetchJSON('categories.json');
-    renderCategories(categories);
-  } catch (e) {
-    main.innerHTML = error(e.message);
-  }
-}
-
-function renderCategories(list) {
-  byId('mainArea').innerHTML = `
-    <h2>Каталог</h2>
-    <div class="list-group">
-      ${list.map(c =>
-        `<a class="list-group-item category" data-file="${c.shortname}.json">
-          ${escape(c.name)}
-         </a>`
-      ).join('')}
-    </div>
-    <button id="specialBtn" class="btn btn-outline-primary mt-3">Specials</button>
-    <div id="notes"></div>
-    <div id="content"></div>
-  `;
-
-  document.querySelectorAll('.category').forEach(el =>
-    el.onclick = () => loadCategory(el.dataset.file)
-  );
-
-  byId('specialBtn').onclick = () => {
-    const cat = list[Math.floor(Math.random() * list.length)];
-    loadCategory(`${cat.shortname}.json`);
-  };
-}
-
-async function loadCategory(file) {
-  byId('content').innerHTML = `<p>Завантаження...</p>`;
-  byId('notes').innerHTML = '';
-
-  try {
-    const data = await fetchJSON(file);
-    renderCategory(data);
-  } catch (e) {
-    byId('content').innerHTML = error(e.message);
-  }
-}
-
-function renderCategory(cat) {
-  byId('notes').innerHTML = `
-    <h3>${escape(cat.name)}</h3>
-    <p>${escape(cat.notes || '')}</p>
-  `;
-
-  if (!cat.items?.length) {
-    byId('content').innerHTML = `<p>Немає товарів.</p>`;
-    return;
-  }
-
-  byId('content').innerHTML = `
-    <div class="row">
-      ${cat.items.map(renderItem).join('')}
-    </div>
-  `;
-}
-
-function renderItem(i) {
-  return `
-    <div class="col-md-6 col-lg-4 mb-4">
-      <div class="card h-100">
-        <img src="${attr(i.image || 'https://place-hold.it/200x200')}" class="card-img-top">
-        <div class="card-body">
-          <h5>${escape(i.name)}</h5>
-          <p>${escape(i.description)}</p>
-          <strong>${escape(i.price)}</strong>
-        </div>
+function showHome() {
+  const main = document.getElementById('mainArea');
+  main.innerHTML = `
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Вітання</h2>
+        <p class="card-text">Натисніть <strong>Каталог</strong> для завантаження списку категорій з JSON (через Ajax). Також доступна категорія <strong>Specials</strong>, яка показує випадкову категорію.</p>
       </div>
     </div>
   `;
 }
 
-function escape(s) {
-  return String(s || '')
-    .replaceAll('&','&amp;')
-    .replaceAll('<','&lt;')
-    .replaceAll('>','&gt;')
-    .replaceAll('"','&quot;');
+async function loadCategories() {
+  const main = document.getElementById('mainArea');
+  main.innerHTML = `<p>Завантаження категорій...</p>`;
+
+  try {
+    const res = await fetch(`${dataPath}categories.json`);
+    if (!res.ok) throw new Error('Не вдалося завантажити categories.json');
+    const categories = await res.json();
+
+    renderCategories(categories);
+  } catch (err) {
+    main.innerHTML = `<div class="alert alert-danger">Помилка: ${err.message}</div>`;
+  }
 }
 
-function attr(s) {
-  return escape(s);
+function renderCategories(categories) {
+  const main = document.getElementById('mainArea');
+  let html = `<h2>Каталог</h2>`;
+  html += `<div class="list-group mb-3">`;
+  categories.forEach(cat => {
+    html += `<a class="list-group-item list-group-item-action category-link" data-file="${cat.shortname}.json">${escapeHtml(cat.name)}</a>`;
+  });
+  html += `</div>`;
+
+  html += `<div class="mb-3"><a class="btn btn-outline-primary" id="specialsBtn">Specials</a></div>`;
+
+  html += `<div id="categoryNotes" class="mb-3"></div>`;
+  html += `<div id="categoryContent"></div>`;
+
+  main.innerHTML = html;
+
+  document.querySelectorAll('.category-link').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const file = e.currentTarget.getAttribute('data-file');
+      loadCategory(file);
+    });
+  });
+
+  document.getElementById('specialsBtn').addEventListener('click', () => {
+    const categoriesList = categories;
+    const idx = Math.floor(Math.random() * categoriesList.length);
+    const cat = categoriesList[idx];
+    loadCategory(`${cat.shortname}.json`);
+  });
 }
 
-function error(msg) {
-  return `<div class="alert alert-danger">${msg}</div>`;
+async function loadCategory(filename) {
+  const notesDiv = document.getElementById('categoryNotes');
+  const contentDiv = document.getElementById('categoryContent');
+  contentDiv.innerHTML = `<p>Завантаження категорії...</p>`;
+  notesDiv.innerHTML = '';
+
+  try {
+    const res = await fetch(`${dataPath}${filename}`);
+    if (!res.ok) throw new Error(`Не вдалося завантажити ${filename}`);
+    const catData = await res.json();
+
+    const title = catData.name || 'Категорія';
+    const notes = catData.notes || '';
+    notesDiv.innerHTML = `<h3>${escapeHtml(title)}</h3><p>${escapeHtml(notes)}</p>`;
+
+    if (!Array.isArray(catData.items) || catData.items.length === 0) {
+      contentDiv.innerHTML = `<p>Немає товарів у цій категорії.</p>`;
+      return;
+    }
+
+    let html = `<div class="row">`;
+    catData.items.forEach(item => {
+      html += `
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="${escapeAttr(item.image || `https://place-hold.it/200x200`)}" class="card-img-top product-img" alt="${escapeAttr(item.name)}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${escapeHtml(item.name)}</h5>
+              <p class="card-text">${escapeHtml(item.description)}</p>
+              <div class="mt-auto"><strong>Ціна: </strong>${escapeHtml(item.price)}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+    contentDiv.innerHTML = html;
+
+  } catch (err) {
+    contentDiv.innerHTML = `<div class="alert alert-danger">Помилка: ${err.message}</div>`;
+  }
+}
+
+function escapeHtml(str) {
+  if (!str && str !== 0) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+function escapeAttr(str) {
+  return escapeHtml(str).replace(/"/g, '&quot;');
 }
