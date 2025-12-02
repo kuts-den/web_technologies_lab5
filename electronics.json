@@ -1,0 +1,40 @@
+{
+  "id": 1,
+  "name": "Електроніка",
+  "shortname": "electronics",
+  "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "items": [
+    {
+      "id": 101,
+      "name": "Смартфон X100",
+      "shortname": "x100",
+      "description": "Потужний смартфон з 6.5'' дисплеєм.",
+      "price": "799 USD",
+      "image": "https://place-hold.it/200x200?text=X100"
+    },
+    {
+      "id": 102,
+      "name": "Навушники ProSound",
+      "shortname": "prosound",
+      "description": "Шумоподавлення, бездротові.",
+      "price": "199 USD",
+      "image": "https://place-hold.it/200x200?text=Headphones"
+    },
+    {
+      "id": 103,
+      "name": "Смарт-годинник FitWay",
+      "shortname": "fitway",
+      "description": "Фітнес-годинник з GPS.",
+      "price": "149 USD",
+      "image": "https://place-hold.it/200x200?text=Watch"
+    },
+    {
+      "id": 104,
+      "name": "Портативна зарядка 10k",
+      "shortname": "power10k",
+      "description": "Потужний павербанк 10000 mAh.",
+      "price": "29 USD",
+      "image": "https://place-hold.it/200x200?text=Powerbank"
+    }
+  ]
+}

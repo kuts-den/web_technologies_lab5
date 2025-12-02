@@ -1,0 +1,12 @@
+{
+  "id": 3,
+  "name": "Одяг",
+  "shortname": "fashion",
+  "notes": "Колекція сезону.",
+  "items": [
+    { "id": 301, "name": "Куртка", "shortname": "jacket", "description": "Тепла зимова куртка.", "price": "120 USD", "image": "https://place-hold.it/200x200?text=Jacket" },
+    { "id": 302, "name": "Футболка", "shortname": "tee", "description": "Бавовняна футболка.", "price": "20 USD", "image": "https://place-hold.it/200x200?text=T-shirt" },
+    { "id": 303, "name": "Спідниця", "shortname": "skirt", "description": "Легка спідниця.", "price": "45 USD", "image": "https://place-hold.it/200x200?text=Skirt" },
+    { "id": 304, "name": "Кепка", "shortname": "cap", "description": "Модна кепка.", "price": "15 USD", "image": "https://place-hold.it/200x200?text=Cap" }
+  ]
+}
