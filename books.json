@@ -4,9 +4,10 @@
   "shortname": "books",
   "notes": "Lorem ipsum dolor sit amet.",
   "items": [
-    { "id": 201, "name": "Роман A", "shortname": "bookA", "description": "Драматичний роман.", "price": "12 USD", "image": "https://place-hold.it/200x200?text=Book+A" },
+    { "id": 201, "name": "Роман A", "shortname": "bookA", "description": "Драматичний роман.", "price": "12 USD", "image": "https://images.pexels.com/photos/35029678/pexels-photo-35029678.jpeg" },
     { "id": 202, "name": "Наукова книга B", "shortname": "bookB", "description": "Пізнавальна література.", "price": "18 USD", "image": "https://place-hold.it/200x200?text=Book+B" },
     { "id": 203, "name": "Дитяча книга C", "shortname": "bookC", "description": "Книга для дітей.", "price": "9 USD", "image": "https://place-hold.it/200x200?text=Book+C" },
     { "id": 204, "name": "Підручник D", "shortname": "bookD", "description": "Освітній підручник.", "price": "25 USD", "image": "https://place-hold.it/200x200?text=Book+D" }
   ]
 }
+
