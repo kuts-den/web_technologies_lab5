@@ -80,7 +80,7 @@ async function loadCategory(filename) {
       return;
     }
 
-    let html = `<div class="row">`;
+    let html = `<div class="row d-flex">`;
     catData.items.forEach(item => {
       html += `
         <div class="col-md-6 col-lg-6 mb-4">
@@ -115,5 +115,6 @@ function escapeHtml(str) {
 function escapeAttr(str) {
   return escapeHtml(str).replace(/"/g, '&quot;');
 }
+
 
 
