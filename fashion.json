@@ -4,9 +4,10 @@
   "shortname": "fashion",
   "notes": "Колекція сезону.",
   "items": [
-    { "id": 301, "name": "Куртка", "shortname": "jacket", "description": "Тепла зимова куртка.", "price": "120 USD", "image": "https://place-hold.it/200x200?text=Jacket" },
-    { "id": 302, "name": "Футболка", "shortname": "tee", "description": "Бавовняна футболка.", "price": "20 USD", "image": "https://place-hold.it/200x200?text=T-shirt" },
-    { "id": 303, "name": "Спідниця", "shortname": "skirt", "description": "Легка спідниця.", "price": "45 USD", "image": "https://place-hold.it/200x200?text=Skirt" },
-    { "id": 304, "name": "Кепка", "shortname": "cap", "description": "Модна кепка.", "price": "15 USD", "image": "https://place-hold.it/200x200?text=Cap" }
+    { "id": 301, "name": "Куртка", "shortname": "jacket", "description": "Тепла.", "price": "120 USD", "image": "https://images.pexels.com/photos/747470/pexels-photo-747470.jpeg" },
+    { "id": 302, "name": "Футболка", "shortname": "tee", "description": "футболка.", "price": "20 USD", "image": "https://images.pexels.com/photos/991509/pexels-photo-991509.jpeg" },
+    { "id": 303, "name": "Спідниця", "shortname": "skirt", "description": "Легка спідниця.", "price": "45 USD", "image": "https://images.pexels.com/photos/601316/pexels-photo-601316.jpeg" },
+    { "id": 304, "name": "Кепка", "shortname": "cap", "description": "Модна.", "price": "15 USD", "image": "https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg" }
   ]
 }
+
