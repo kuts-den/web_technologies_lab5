@@ -6,35 +6,36 @@
   "items": [
     {
       "id": 101,
-      "name": "Смартфон X100",
-      "shortname": "x100",
-      "description": "Потужний смартфон з 6.5'' дисплеєм.",
-      "price": "799 USD",
-      "image": "https://place-hold.it/200x200?text=X100"
+      "name": "Смартфон T1000",
+      "shortname": "T1000",
+      "description": "Потужний смартфон",
+      "price": "1099 USD",
+      "image": "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg"
     },
     {
       "id": 102,
-      "name": "Навушники ProSound",
-      "shortname": "prosound",
+      "name": "Навушники ProstoSound",
+      "shortname": "prostosound",
       "description": "Шумоподавлення, бездротові.",
-      "price": "199 USD",
-      "image": "https://place-hold.it/200x200?text=Headphones"
+      "price": "19999 USD",
+      "image": "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg"
     },
     {
       "id": 103,
-      "name": "Смарт-годинник FitWay",
-      "shortname": "fitway",
-      "description": "Фітнес-годинник з GPS.",
-      "price": "149 USD",
-      "image": "https://place-hold.it/200x200?text=Watch"
+      "name": "Смарт-годинник FitnessOnTheWayHome",
+      "shortname": "yeah",
+      "description": "Фітнес",
+      "price": "14569 USD",
+      "image": "https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg"
     },
     {
       "id": 104,
-      "name": "Портативна зарядка 10k",
-      "shortname": "power10k",
-      "description": "Потужний павербанк 10000 mAh.",
-      "price": "29 USD",
-      "image": "https://place-hold.it/200x200?text=Powerbank"
+      "name": "Портативна зарядка",
+      "shortname": "powerbanka",
+      "description": "Потужний",
+      "price": "9 USD",
+      "image": "https://images.pexels.com/photos/11031423/pexels-photo-11031423.png"
     }
   ]
 }
+
