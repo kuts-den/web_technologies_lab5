@@ -83,7 +83,7 @@ async function loadCategory(filename) {
     let html = `<div class="row">`;
     catData.items.forEach(item => {
       html += `
-        <div class="col-md-6 col-lg-4 mb-4">
+        <div class="col-md-6 col-lg-6 mb-4">
           <div class="card h-100">
             <img src="${escapeAttr(item.image || `https://place-hold.it/200x200`)}" class="card-img-top product-img" alt="${escapeAttr(item.name)}">
             <div class="card-body d-flex flex-column">
@@ -115,4 +115,5 @@ function escapeHtml(str) {
 function escapeAttr(str) {
   return escapeHtml(str).replace(/"/g, '&quot;');
 }
+
 
